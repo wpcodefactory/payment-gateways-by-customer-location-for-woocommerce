@@ -1,8 +1,8 @@
 === Payment Gateways by Customer Location for WooCommerce ===
-Contributors: algoritmika, anbinder
+Contributors: wpcodefactory, algoritmika, anbinder
 Tags: woocommerce, payment gateway, location, woo commerce
 Requires at least: 4.4
-Tested up to: 5.9
+Tested up to: 6.0
 Stable tag: 1.5.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -60,6 +60,12 @@ With [Pro version](https://wpfactory.com/item/payment-gateways-by-customer-locat
 1. Payment Gateways by Country.
 
 == Changelog ==
+
+= 1.5.1 - 27/10/2022 =
+* Tested up to: 6.0.
+* WC tested up to: 7.0.
+* Readme.txt updated.
+* Deploy script added.
 
 = 1.5.0 - 09/02/2022 =
 * Dev - "Cities" section added.
