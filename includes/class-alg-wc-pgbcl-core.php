@@ -2,7 +2,7 @@
 /**
  * Payment Gateways by Customer Location for WooCommerce - Core Class
  *
- * @version 1.5.0
+ * @version 1.6.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -15,12 +15,28 @@ if ( ! class_exists( 'Alg_WC_Payment_Gateways_by_Customer_Location_Core' ) ) :
 class Alg_WC_Payment_Gateways_by_Customer_Location_Core {
 
 	/**
+	 * force_js_checkout_update.
+	 *
+	 * @version 1.6.0
+	 * @since   1.6.0
+	 */
+	public $force_js_checkout_update;
+
+	/**
+	 * options_data.
+	 *
+	 * @version 1.6.0
+	 * @since   1.6.0
+	 */
+	public $options_data;
+
+	/**
 	 * Constructor.
 	 *
 	 * @version 1.1.0
 	 * @since   1.0.0
 	 *
-	 * @todo    [maybe] rename classes `Alg_WC_Payment_Gateways_by_Customer_Location_Core` to `Alg_WC_PGBCL_Core` etc.
+	 * @todo    (dev) rename classes `Alg_WC_Payment_Gateways_by_Customer_Location_Core` to `Alg_WC_PGBCL_Core` etc.
 	 */
 	function __construct() {
 		if ( 'yes' === get_option( 'alg_wc_gateways_by_location_plugin_enabled', 'yes' ) ) {
@@ -84,9 +100,9 @@ class Alg_WC_Payment_Gateways_by_Customer_Location_Core {
 	 * @version 1.5.0
 	 * @since   1.0.0
 	 *
-	 * @todo    [maybe] apply `alg_wc_gateways_by_location` filter
-	 * @todo    [maybe] add option to detect customer's country and state by current `$_REQUEST` (as it is now done with postcodes)
-	 * @todo    [maybe] (feature) add more locations options (e.g. "... by city")
+	 * @todo    (dev) apply `alg_wc_gateways_by_location` filter
+	 * @todo    (dev) add option to detect customer's country and state by current `$_REQUEST` (as it is now done with postcodes)
+	 * @todo    (feature) add more locations options (e.g., "... by city")
 	 */
 	function available_payment_gateways( $available_gateways ) {
 		// Prepare options data

@@ -1,8 +1,8 @@
-#: includes/class-alg-wc-pgbcl.php:134
+#: includes/class-alg-wc-pgbcl.php:162
 msgid "Settings"
 msgstr ""
 
-#: includes/class-alg-wc-pgbcl.php:137
+#: includes/class-alg-wc-pgbcl.php:165
 msgid "Go Pro"
 msgstr ""
 
@@ -1192,8 +1192,8 @@ msgstr ""
 
 #: includes/settings/class-alg-wc-pgbcl-settings-postcodes.php:62
 msgid ""
-"Postcodes containing wildcards (e.g. <code>CB23*</code>) and fully numeric "
-"ranges (e.g. <code>90210...99000</code>) are also supported."
+"Postcodes containing wildcards (e.g., <code>CB23*</code>) and fully numeric "
+"ranges (e.g., <code>90210...99000</code>) are also supported."
 msgstr ""
 
 #: includes/settings/class-alg-wc-pgbcl-settings-postcodes.php:69

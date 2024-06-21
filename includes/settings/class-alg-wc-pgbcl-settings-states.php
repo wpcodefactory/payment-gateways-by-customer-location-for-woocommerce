@@ -32,7 +32,7 @@ class Alg_WC_Payment_Gateways_by_Customer_Location_Settings_States extends Alg_W
 	 * @version 1.4.0
 	 * @since   1.1.0
 	 *
-	 * @todo    [later] states: not only "base country"
+	 * @todo    (dev) states: not only "base country"
 	 */
 	function get_settings() {
 		$settings = array(

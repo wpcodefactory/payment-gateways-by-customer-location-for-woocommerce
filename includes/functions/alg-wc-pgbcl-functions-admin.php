@@ -31,7 +31,7 @@ if ( ! function_exists( 'alg_wc_gateways_by_location_get_countries' ) ) {
 	 * @version 1.0.0
 	 * @since   1.0.0
 	 *
-	 * @todo    [later] get from WC instead?
+	 * @todo    (dev) get from WC instead?
 	 */
 	function alg_wc_gateways_by_location_get_countries() {
 		return array(

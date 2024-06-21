@@ -17,8 +17,8 @@ if ( ! function_exists( 'alg_wc_gateways_by_location_get_location' ) ) {
 	 * @version 1.5.0
 	 * @since   1.0.0
 	 *
-	 * @todo    [next] (dev) code refactoring: merge `city` and `postcode`?
-	 * @todo    [maybe] (WC version < 3.0.0) recheck if `get_shipping_country()` and `get_shipping_state()` work correctly
+	 * @todo    (dev) code refactoring: merge `city` and `postcode`?
+	 * @todo    (dev) (WC version < 3.0.0) recheck if `get_shipping_country()` and `get_shipping_state()` work correctly
 	 */
 	function alg_wc_gateways_by_location_get_location( $type ) {
 		$result = false;
@@ -130,7 +130,7 @@ if ( ! function_exists( 'alg_wc_gateways_by_location_customer_get_country' ) ) {
 	 * @version 1.0.0
 	 * @since   1.0.0
 	 *
-	 * @todo    [maybe] (WC version < 3.0.0) `WC()->customer->get_country()`
+	 * @todo    (dev) (WC version < 3.0.0) `WC()->customer->get_country()`
 	 */
 	function alg_wc_gateways_by_location_customer_get_country() {
 		return WC()->customer->get_billing_country();
@@ -144,7 +144,7 @@ if ( ! function_exists( 'alg_wc_gateways_by_location_customer_get_state' ) ) {
 	 * @version 1.0.0
 	 * @since   1.0.0
 	 *
-	 * @todo    [maybe] (WC version < 3.0.0) `WC()->customer->get_state()`
+	 * @todo    (dev) (WC version < 3.0.0) `WC()->customer->get_state()`
 	 */
 	function alg_wc_gateways_by_location_customer_get_state() {
 		return WC()->customer->get_billing_state();

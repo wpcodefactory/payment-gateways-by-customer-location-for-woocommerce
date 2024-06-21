@@ -2,7 +2,7 @@
 /**
  * Payment Gateways by Customer Location for WooCommerce - Postcodes Section Settings
  *
- * @version 1.5.0
+ * @version 1.6.0
  * @since   1.1.0
  *
  * @author  Algoritmika Ltd.
@@ -29,7 +29,7 @@ class Alg_WC_Payment_Gateways_by_Customer_Location_Settings_Postcodes extends Al
 	/**
 	 * get_settings.
 	 *
-	 * @version 1.5.0
+	 * @version 1.6.0
 	 * @since   1.1.0
 	 */
 	function get_settings() {
@@ -59,7 +59,7 @@ class Alg_WC_Payment_Gateways_by_Customer_Location_Settings_Postcodes extends Al
 					'type'     => 'title',
 					'id'       => "alg_wc_gateways_by_location_postcode_options[{$key}]",
 					'desc'     => __( 'One per line.', 'payment-gateways-by-customer-location-for-woocommerce' ) . ' ' .
-						__( 'Postcodes containing wildcards (e.g. <code>CB23*</code>) and fully numeric ranges (e.g. <code>90210...99000</code>) are also supported.', 'payment-gateways-by-customer-location-for-woocommerce' ) .
+						__( 'Postcodes containing wildcards (e.g., <code>CB23*</code>) and fully numeric ranges (e.g., <code>90210...99000</code>) are also supported.', 'payment-gateways-by-customer-location-for-woocommerce' ) .
 						( ! in_array( $key, array( 'bacs', 'cheque', 'paypal', 'cod' ) ) ? apply_filters( 'alg_wc_gateways_by_location_settings',
 							'<br>' . sprintf( 'You will need %s plugin to set options for the "%s" gateway.',
 								'<a target="_blank" href="https://wpfactory.com/item/payment-gateways-by-customer-location-for-woocommerce/">' .

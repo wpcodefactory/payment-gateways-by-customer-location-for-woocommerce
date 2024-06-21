@@ -1,9 +1,9 @@
 === Payment Gateways by Customer Location for WooCommerce ===
-Contributors: wpcodefactory, omardabbas, karzin, anbinder, algoritmika, kousikmukherjeeli
+Contributors: wpcodefactory, algoritmika, anbinder, karzin, omardabbas, kousikmukherjeeli
 Tags: woocommerce, payment gateway, location, woo commerce
 Requires at least: 4.4
-Tested up to: 6.3
-Stable tag: 1.5.4
+Tested up to: 6.5
+Stable tag: 1.6.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -42,12 +42,16 @@ Free version allows setting options for all standard gateways, i.e.:
 * Cash on delivery (COD),
 * PayPal.
 
-With [Pro version](https://wpfactory.com/item/payment-gateways-by-customer-location-for-woocommerce/) you can set options for **any payment gateway** (including custom gateways).
+With the [Pro version](https://wpfactory.com/item/payment-gateways-by-customer-location-for-woocommerce/) you can set options for **any payment gateway** (including custom gateways).
 
-= Feedback =
+### &#128472; Feedback ###
 
 * We are open to your suggestions and feedback. Thank you for using or trying out one of our plugins!
 * [Visit plugin site](https://wpfactory.com/item/payment-gateways-by-customer-location-for-woocommerce/).
+
+### &#8505; More ###
+
+* The plugin is **"High-Performance Order Storage (HPOS)"** compatible.
 
 == Installation ==
 
@@ -61,10 +65,18 @@ With [Pro version](https://wpfactory.com/item/payment-gateways-by-customer-locat
 
 == Changelog ==
 
+= 1.6.0 - 21/06/2024 =
+* Dev - "High-Performance Order Storage (HPOS)" compatibility.
+* Dev - PHP 8.2 compatibility - "Creation of dynamic property is deprecated" notice fixed.
+* Dev - Postcodes - Admin settings descriptions updated.
+* Tested up to: 6.5.
+* WC tested up to: 9.0.
+* WooCommerce added to the "Requires Plugins" (plugin header).
+
 = 1.5.4 - 26/09/2023 =
 * Tested up to: 6.3.
 * WC tested up to: 8.1.
-* Update plugin icon, banner.
+* Plugin icon, banner updated.
 
 = 1.5.3 - 18/06/2023 =
 * WC tested up to: 7.8.

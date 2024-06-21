@@ -32,8 +32,8 @@ class Alg_WC_Payment_Gateways_by_Customer_Location_Settings_General extends Alg_
 	 * @version 1.5.0
 	 * @since   1.0.0
 	 *
-	 * @todo    [later] Force JavaScript checkout update: `billing_country`, `shipping_country`
-	 * @todo    [maybe] remove "Enable plugin" option
+	 * @todo    (dev) Force JavaScript checkout update: `billing_country`, `shipping_country`
+	 * @todo    (dev) remove "Enable plugin" option
 	 */
 	function get_settings() {
 
