@@ -2,8 +2,8 @@
 Contributors: wpcodefactory, algoritmika, anbinder, karzin, omardabbas, kousikmukherjeeli
 Tags: woocommerce, payment gateway, location, woo commerce
 Requires at least: 4.4
-Tested up to: 6.6
-Stable tag: 1.6.1
+Tested up to: 6.7
+Stable tag: 1.7.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -64,6 +64,18 @@ With the [Pro version](https://wpfactory.com/item/payment-gateways-by-customer-l
 1. Payment Gateways by Country.
 
 == Changelog ==
+
+= 1.7.0 - 29/03/2025 =
+* Dev - Security - Output escaped.
+* Dev - Security - Input sanitized.
+* Dev - Countries - Added default WooCommerce countries support before custom countries.
+* Dev - Plugin settings moved to the "WPFactory" menu.
+* Dev - "Recommendations" added.
+* Dev - "Key Manager" added.
+* Dev - Code refactoring.
+* Dev - Coding standards improved.
+* Tested up to: 6.7.
+* WC tested up to: 9.7.
 
 = 1.6.1 - 30/07/2024 =
 * Tested up to: 6.6.

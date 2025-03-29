@@ -2,7 +2,7 @@
 /**
  * Payment Gateways by Customer Location for WooCommerce - General Section Settings
  *
- * @version 1.5.0
+ * @version 1.7.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -29,7 +29,7 @@ class Alg_WC_Payment_Gateways_by_Customer_Location_Settings_General extends Alg_
 	/**
 	 * get_settings.
 	 *
-	 * @version 1.5.0
+	 * @version 1.7.0
 	 * @since   1.0.0
 	 *
 	 * @todo    (dev) Force JavaScript checkout update: `billing_country`, `shipping_country`
@@ -65,10 +65,14 @@ class Alg_WC_Payment_Gateways_by_Customer_Location_Settings_General extends Alg_
 			),
 			array(
 				'title'    => __( 'Detect country by', 'payment-gateways-by-customer-location-for-woocommerce' ),
-				'desc'     => sprintf( __( 'If you are going to select "%s" option here, please make sure that %s in WooCommerce is available.', 'payment-gateways-by-customer-location-for-woocommerce' ),
+				'desc'     => sprintf(
+					/* Translators: %1$s: Option name, %2$s: Link. */
+					__( 'If you are going to select "%1$s" option here, please make sure that %2$s in WooCommerce is available.', 'payment-gateways-by-customer-location-for-woocommerce' ),
 					__( 'Country by IP', 'payment-gateways-by-customer-location-for-woocommerce' ),
 					'<a href="' . admin_url( 'admin.php?page=wc-settings&tab=integration&section=maxmind_geolocation' ) . '">' .
-						__( 'Geolocation', 'payment-gateways-by-customer-location-for-woocommerce' ) . '</a>' ),
+						__( 'Geolocation', 'payment-gateways-by-customer-location-for-woocommerce' ) .
+					'</a>'
+				),
 				'id'       => 'alg_wc_gateways_by_location_country_type',
 				'type'     => 'select',
 				'class'    => 'wc-enhanced-select',

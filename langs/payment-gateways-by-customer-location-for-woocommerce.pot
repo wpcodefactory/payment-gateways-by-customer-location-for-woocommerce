@@ -1,42 +1,66 @@
-# Copyright (C) 2024 WPFactory
-# This file is distributed under the same license as the Payment Gateways by Customer Location for WooCommerce Pro plugin.
+# Copyright (C) 2025 WPFactory
+# This file is distributed under the GNU General Public License v3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: payment-gateways-by-customer-location-for-woocommerce 1.6.1\n"
+"Project-Id-Version: Payment Gateways by Customer Location for WooCommerce 1.7.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/payment-gateways-by-customer-location-for-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-07-30T19:51:58+02:00\n"
+"POT-Creation-Date: 2025-03-29T09:38:14+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.9.0\n"
+"X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: payment-gateways-by-customer-location-for-woocommerce\n"
 
 #. Plugin Name of the plugin
-msgid "Payment Gateways by Customer Location for WooCommerce Pro"
+#: payment-gateways-by-customer-location-for-woocommerce.php
+msgid "Payment Gateways by Customer Location for WooCommerce"
 msgstr ""
 
 #. Plugin URI of the plugin
+#: payment-gateways-by-customer-location-for-woocommerce.php
 msgid "https://wpfactory.com/item/payment-gateways-by-customer-location-for-woocommerce/"
 msgstr ""
 
 #. Description of the plugin
+#: payment-gateways-by-customer-location-for-woocommerce.php
 #: includes/settings/class-alg-wc-pgbcl-settings-general.php:49
 msgid "Set countries, states, cities or postcodes to include/exclude for WooCommerce payment gateways to show up."
 msgstr ""
 
 #. Author of the plugin
+#: payment-gateways-by-customer-location-for-woocommerce.php
 msgid "WPFactory"
 msgstr ""
 
 #. Author URI of the plugin
+#: payment-gateways-by-customer-location-for-woocommerce.php
 msgid "https://wpfactory.com"
 msgstr ""
 
-#: includes/class-alg-wc-pgbcl.php:165
+#: includes/class-alg-wc-pgbcl.php:187
+msgid "Settings"
+msgstr ""
+
+#: includes/class-alg-wc-pgbcl.php:191
 msgid "Go Pro"
+msgstr ""
+
+#: includes/class-alg-wc-pgbcl.php:235
+#: includes/class-alg-wc-pgbcl.php:236
+#: includes/settings/class-alg-wc-pgbcl-settings-general.php:47
+#: includes/settings/class-alg-wc-settings-pgbcl.php:26
+msgid "Payment Gateways by Customer Location"
+msgstr ""
+
+#: includes/functions/alg-wc-pgbcl-functions-admin.php:38
+msgid "Netherlands Antilles"
+msgstr ""
+
+#: includes/functions/alg-wc-pgbcl-functions-admin.php:39
+msgid "European Union"
 msgstr ""
 
 #: includes/settings/class-alg-wc-pgbcl-settings-cities.php:25
@@ -122,11 +146,6 @@ msgstr ""
 msgid "Payment Gateways by Customer Location Options"
 msgstr ""
 
-#: includes/settings/class-alg-wc-pgbcl-settings-general.php:47
-#: includes/settings/class-alg-wc-settings-pgbcl.php:25
-msgid "Payment Gateways by Customer Location"
-msgstr ""
-
 #: includes/settings/class-alg-wc-pgbcl-settings-general.php:48
 msgid "Enable plugin"
 msgstr ""
@@ -139,78 +158,79 @@ msgstr ""
 msgid "Detect country by"
 msgstr ""
 
-#: includes/settings/class-alg-wc-pgbcl-settings-general.php:68
-msgid "If you are going to select \"%s\" option here, please make sure that %s in WooCommerce is available."
-msgstr ""
-
-#: includes/settings/class-alg-wc-pgbcl-settings-general.php:69
-#: includes/settings/class-alg-wc-pgbcl-settings-general.php:79
-msgid "Country by IP"
+#. Translators: %1$s: Option name, %2$s: Link.
+#: includes/settings/class-alg-wc-pgbcl-settings-general.php:70
+msgid "If you are going to select \"%1$s\" option here, please make sure that %2$s in WooCommerce is available."
 msgstr ""
 
 #: includes/settings/class-alg-wc-pgbcl-settings-general.php:71
+#: includes/settings/class-alg-wc-pgbcl-settings-general.php:83
+msgid "Country by IP"
+msgstr ""
+
+#: includes/settings/class-alg-wc-pgbcl-settings-general.php:73
 msgid "Geolocation"
 msgstr ""
 
-#: includes/settings/class-alg-wc-pgbcl-settings-general.php:77
+#: includes/settings/class-alg-wc-pgbcl-settings-general.php:81
 msgid "Billing country"
 msgstr ""
 
-#: includes/settings/class-alg-wc-pgbcl-settings-general.php:78
+#: includes/settings/class-alg-wc-pgbcl-settings-general.php:82
 msgid "Shipping country"
 msgstr ""
 
-#: includes/settings/class-alg-wc-pgbcl-settings-general.php:83
+#: includes/settings/class-alg-wc-pgbcl-settings-general.php:87
 msgid "Detect state by"
 msgstr ""
 
-#: includes/settings/class-alg-wc-pgbcl-settings-general.php:89
-#: includes/settings/class-alg-wc-pgbcl-settings-general.php:135
+#: includes/settings/class-alg-wc-pgbcl-settings-general.php:93
+#: includes/settings/class-alg-wc-pgbcl-settings-general.php:139
 msgid "Billing state"
 msgstr ""
 
-#: includes/settings/class-alg-wc-pgbcl-settings-general.php:90
-#: includes/settings/class-alg-wc-pgbcl-settings-general.php:136
+#: includes/settings/class-alg-wc-pgbcl-settings-general.php:94
+#: includes/settings/class-alg-wc-pgbcl-settings-general.php:140
 msgid "Shipping state"
 msgstr ""
 
-#: includes/settings/class-alg-wc-pgbcl-settings-general.php:94
+#: includes/settings/class-alg-wc-pgbcl-settings-general.php:98
 msgid "Detect city by"
 msgstr ""
 
-#: includes/settings/class-alg-wc-pgbcl-settings-general.php:100
-#: includes/settings/class-alg-wc-pgbcl-settings-general.php:137
+#: includes/settings/class-alg-wc-pgbcl-settings-general.php:104
+#: includes/settings/class-alg-wc-pgbcl-settings-general.php:141
 msgid "Billing city"
 msgstr ""
 
-#: includes/settings/class-alg-wc-pgbcl-settings-general.php:101
-#: includes/settings/class-alg-wc-pgbcl-settings-general.php:138
+#: includes/settings/class-alg-wc-pgbcl-settings-general.php:105
+#: includes/settings/class-alg-wc-pgbcl-settings-general.php:142
 msgid "Shipping city"
 msgstr ""
 
-#: includes/settings/class-alg-wc-pgbcl-settings-general.php:105
+#: includes/settings/class-alg-wc-pgbcl-settings-general.php:109
 msgid "Detect postcode by"
 msgstr ""
 
-#: includes/settings/class-alg-wc-pgbcl-settings-general.php:111
-#: includes/settings/class-alg-wc-pgbcl-settings-general.php:139
+#: includes/settings/class-alg-wc-pgbcl-settings-general.php:115
+#: includes/settings/class-alg-wc-pgbcl-settings-general.php:143
 msgid "Billing postcode"
 msgstr ""
 
-#: includes/settings/class-alg-wc-pgbcl-settings-general.php:112
-#: includes/settings/class-alg-wc-pgbcl-settings-general.php:140
+#: includes/settings/class-alg-wc-pgbcl-settings-general.php:116
+#: includes/settings/class-alg-wc-pgbcl-settings-general.php:144
 msgid "Shipping postcode"
 msgstr ""
 
-#: includes/settings/class-alg-wc-pgbcl-settings-general.php:123
+#: includes/settings/class-alg-wc-pgbcl-settings-general.php:127
 msgid "Advanced Options"
 msgstr ""
 
-#: includes/settings/class-alg-wc-pgbcl-settings-general.php:128
+#: includes/settings/class-alg-wc-pgbcl-settings-general.php:132
 msgid "Force JavaScript checkout update"
 msgstr ""
 
-#: includes/settings/class-alg-wc-pgbcl-settings-general.php:129
+#: includes/settings/class-alg-wc-pgbcl-settings-general.php:133
 msgid "If payment gateways section on the checkout page is not updated automatically when customer changes state, city or postcode, select fields to force the update."
 msgstr ""
 
@@ -279,22 +299,22 @@ msgstr ""
 msgid "Payment gateway will NOT be available if customer is from selected states."
 msgstr ""
 
-#: includes/settings/class-alg-wc-settings-pgbcl.php:46
+#: includes/settings/class-alg-wc-settings-pgbcl.php:51
 msgid "Reset Settings"
 msgstr ""
 
-#: includes/settings/class-alg-wc-settings-pgbcl.php:51
+#: includes/settings/class-alg-wc-settings-pgbcl.php:56
 msgid "Reset section settings"
 msgstr ""
 
-#: includes/settings/class-alg-wc-settings-pgbcl.php:52
+#: includes/settings/class-alg-wc-settings-pgbcl.php:57
 msgid "Reset"
 msgstr ""
 
-#: includes/settings/class-alg-wc-settings-pgbcl.php:53
+#: includes/settings/class-alg-wc-settings-pgbcl.php:58
 msgid "Check the box and save changes to reset."
 msgstr ""
 
-#: includes/settings/class-alg-wc-settings-pgbcl.php:92
+#: includes/settings/class-alg-wc-settings-pgbcl.php:98
 msgid "Your settings have been reset."
 msgstr ""

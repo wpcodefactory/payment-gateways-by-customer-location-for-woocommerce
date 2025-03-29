@@ -2,7 +2,7 @@
 /**
  * Payment Gateways by Customer Location for WooCommerce - Functions - Frontend
  *
- * @version 1.5.0
+ * @version 1.7.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -14,7 +14,7 @@ if ( ! function_exists( 'alg_wc_gateways_by_location_get_location' ) ) {
 	/**
 	 * alg_wc_gateways_by_location_get_location.
 	 *
-	 * @version 1.5.0
+	 * @version 1.7.0
 	 * @since   1.0.0
 	 *
 	 * @todo    (dev) code refactoring: merge `city` and `postcode`?
@@ -23,49 +23,84 @@ if ( ! function_exists( 'alg_wc_gateways_by_location_get_location' ) ) {
 	function alg_wc_gateways_by_location_get_location( $type ) {
 		$result = false;
 		switch ( $type ) {
+
 			case 'country':
 				$country_type = get_option( 'alg_wc_gateways_by_location_country_type', 'billing' );
-				$result = ( 'by_ip' === $country_type ?
+				$result = (
+					'by_ip' === $country_type ?
 					alg_wc_gateways_by_location_get_country_by_ip() :
-					( isset( WC()->customer ) ? ( 'billing' === $country_type ?
-						alg_wc_gateways_by_location_customer_get_country() : WC()->customer->get_shipping_country() ) : '' ) );
+					(
+						isset( WC()->customer ) ?
+						(
+							'billing' === $country_type ?
+							alg_wc_gateways_by_location_customer_get_country() :
+							WC()->customer->get_shipping_country()
+						) :
+						''
+					)
+				);
 				break;
+
 			case 'state':
-				$result = ( isset( WC()->customer ) ?
-					( 'billing' === get_option( 'alg_wc_gateways_by_location_state_type', 'billing' ) ?
-						alg_wc_gateways_by_location_customer_get_state() : WC()->customer->get_shipping_state() ) :
-					'' );
+				$result = (
+					isset( WC()->customer ) ?
+					(
+						'billing' === get_option( 'alg_wc_gateways_by_location_state_type', 'billing' ) ?
+						alg_wc_gateways_by_location_customer_get_state() :
+						WC()->customer->get_shipping_state()
+					) :
+					''
+				);
 				break;
+
 			case 'city':
 				$city = '';
-				$keys = ( 'billing' === get_option( 'alg_wc_gateways_by_location_cities_type', 'billing' ) ?
-					array( 'city', 'billing_city' ) : array( 's_city', 'shipping_city' ) );
+				$keys = (
+					'billing' === get_option( 'alg_wc_gateways_by_location_cities_type', 'billing' ) ?
+					array( 'city', 'billing_city' ) :
+					array( 's_city', 'shipping_city' )
+				);
+				// phpcs:disable WordPress.Security.NonceVerification.Recommended
 				foreach ( $keys as $key ) {
-					if ( isset( $_REQUEST[ $key ] ) && '' !== $_REQUEST[ $key ] ) {
-						$city = $_REQUEST[ $key ];
+					if (
+						isset( $_REQUEST[ $key ] ) &&
+						'' !== $_REQUEST[ $key ]
+					) {
+						$city = sanitize_text_field( wp_unslash( $_REQUEST[ $key ] ) );
 						break;
 					}
 				}
+				// phpcs:enable WordPress.Security.NonceVerification.Recommended
 				if ( '' === $city ) {
 					$city = WC()->countries->get_base_city();
 				}
 				$result = strtoupper( $city );
 				break;
+
 			case 'postcode':
 				$postcode = '';
-				$keys = ( 'billing' === get_option( 'alg_wc_gateways_by_location_postcodes_type', 'billing' ) ?
-					array( 'postcode', 'billing_postcode' ) : array( 's_postcode', 'shipping_postcode' ) );
+				$keys = (
+					'billing' === get_option( 'alg_wc_gateways_by_location_postcodes_type', 'billing' ) ?
+					array( 'postcode', 'billing_postcode' ) :
+					array( 's_postcode', 'shipping_postcode' )
+				);
+				// phpcs:disable WordPress.Security.NonceVerification.Recommended
 				foreach ( $keys as $key ) {
-					if ( isset( $_REQUEST[ $key ] ) && '' !== $_REQUEST[ $key ] ) {
-						$postcode = $_REQUEST[ $key ];
+					if (
+						isset( $_REQUEST[ $key ] ) &&
+						'' !== $_REQUEST[ $key ]
+					) {
+						$postcode = sanitize_text_field( wp_unslash( $_REQUEST[ $key ] ) );
 						break;
 					}
 				}
+				// phpcs:enable WordPress.Security.NonceVerification.Recommended
 				if ( '' === $postcode ) {
 					$postcode = WC()->countries->get_base_postcode();
 				}
 				$result = strtoupper( $postcode );
 				break;
+
 		}
 		return apply_filters( 'alg_wc_gateways_by_location_get_location', $result, $type );
 	}
@@ -80,7 +115,11 @@ if ( ! function_exists( 'alg_wc_gateways_by_location_range_match' ) ) {
 	 */
 	function alg_wc_gateways_by_location_range_match( $postcode_range, $postcode_to_check ) {
 		$postcode_range = explode( '...', $postcode_range );
-		return ( 2 === count( $postcode_range ) && $postcode_to_check >= $postcode_range[0] && $postcode_to_check <= $postcode_range[1] );
+		return (
+			2 === count( $postcode_range ) &&
+			$postcode_to_check >= $postcode_range[0] &&
+			$postcode_to_check <= $postcode_range[1]
+		);
 	}
 }
 
