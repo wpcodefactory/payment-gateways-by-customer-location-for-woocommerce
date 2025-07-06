@@ -1,9 +1,9 @@
 === Payment Gateways by Customer Location for WooCommerce ===
-Contributors: wpcodefactory, algoritmika, anbinder, karzin, omardabbas, kousikmukherjeeli
-Tags: woocommerce, payment gateway, location, woo commerce
+Contributors: wpcodefactory, algoritmika, anbinder, karzin, omardabbas
+Tags: woocommerce, payment gateway, location, ecommerce
 Requires at least: 4.4
-Tested up to: 6.7
-Stable tag: 1.7.0
+Tested up to: 6.8
+Stable tag: 1.7.1
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -57,13 +57,24 @@ With the [Pro version](https://wpfactory.com/item/payment-gateways-by-customer-l
 
 1. Upload the entire plugin folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the "Plugins" menu in WordPress.
-3. Start by visiting plugin settings at "WooCommerce > Settings > Payment Gateways by Customer Location".
+3. Start by visiting plugin settings at "WPFactory > Payment Gateways by Customer Location".
 
 == Screenshots ==
 
 1. Payment Gateways by Country.
 
 == Changelog ==
+
+= 1.7.1 - 06/07/2025 =
+* Dev - WPFactory Admin Menu - Library updated.
+* Dev - WPFactory Admin Menu - Moved to the `init` hook.
+* Dev - WPFactory Admin Menu - Icon added.
+* Dev - WPFactory Recommendations - Moved to the `init` hook.
+* Dev - WPFactory Key Manager - Moved to the `init` hook.
+* Dev - General - "Enable plugin" option removed.
+* Dev - Code refactoring.
+* WC tested up to: 9.9.
+* Tested up to: 6.8.
 
 = 1.7.0 - 29/03/2025 =
 * Dev - Security - Output escaped.

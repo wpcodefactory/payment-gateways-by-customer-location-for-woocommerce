@@ -2,7 +2,7 @@
 /**
  * Payment Gateways by Customer Location for WooCommerce - Main Class
  *
- * @version 1.7.0
+ * @version 1.7.1
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -114,7 +114,7 @@ final class Alg_WC_Payment_Gateways_by_Customer_Location {
 	 * @version 1.6.0
 	 * @since   1.6.0
 	 *
-	 * @see     https://github.com/woocommerce/woocommerce/wiki/High-Performance-Order-Storage-Upgrade-Recipe-Book#declaring-extension-incompatibility
+	 * @see     https://developer.woocommerce.com/docs/features/high-performance-order-storage/recipe-book/
 	 */
 	function wc_declare_compatibility() {
 		if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
@@ -124,7 +124,11 @@ final class Alg_WC_Payment_Gateways_by_Customer_Location {
 				array( ALG_WC_PGBCL_FILE )
 			);
 			foreach ( $files as $file ) {
-				\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', $file, true );
+				\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility(
+					'custom_order_tables',
+					$file,
+					true
+				);
 			}
 		}
 	}
@@ -145,7 +149,7 @@ final class Alg_WC_Payment_Gateways_by_Customer_Location {
 	/**
 	 * admin.
 	 *
-	 * @version 1.7.0
+	 * @version 1.7.1
 	 * @since   1.1.0
 	 */
 	function admin() {
@@ -154,10 +158,10 @@ final class Alg_WC_Payment_Gateways_by_Customer_Location {
 		add_filter( 'plugin_action_links_' . plugin_basename( ALG_WC_PGBCL_FILE ), array( $this, 'action_links' ) );
 
 		// "Recommendations" page
-		$this->add_cross_selling_library();
+		add_action( 'init', array( $this, 'add_cross_selling_library' ) );
 
 		// WC Settings tab as WPFactory submenu item
-		$this->move_wc_settings_tab_to_wpfactory_menu();
+		add_action( 'init', array( $this, 'move_wc_settings_tab_to_wpfactory_menu' ) );
 
 		// Admin functions
 		require_once plugin_dir_path( __FILE__ ) . 'functions/alg-wc-pgbcl-functions-admin.php';
@@ -184,11 +188,14 @@ final class Alg_WC_Payment_Gateways_by_Customer_Location {
 	function action_links( $links ) {
 		$custom_links = array();
 
-		$custom_links[] = '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=alg_wc_gateways_by_location' ) . '">' . __( 'Settings', 'payment-gateways-by-customer-location-for-woocommerce' ) . '</a>';
+		$custom_links[] = '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=alg_wc_gateways_by_location' ) . '">' .
+			__( 'Settings', 'payment-gateways-by-customer-location-for-woocommerce' ) .
+		'</a>';
 
 		if ( 'payment-gateways-by-customer-location-for-woocommerce.php' === basename( ALG_WC_PGBCL_FILE ) ) {
 			$custom_links[] = '<a target="_blank" style="font-weight: bold; color: green;" href="https://wpfactory.com/item/payment-gateways-by-customer-location-for-woocommerce/">' .
-				__( 'Go Pro', 'payment-gateways-by-customer-location-for-woocommerce' ) . '</a>';
+				__( 'Go Pro', 'payment-gateways-by-customer-location-for-woocommerce' ) .
+			'</a>';
 		}
 
 		return array_merge( $custom_links, $links );
@@ -215,7 +222,7 @@ final class Alg_WC_Payment_Gateways_by_Customer_Location {
 	/**
 	 * move_wc_settings_tab_to_wpfactory_menu.
 	 *
-	 * @version 1.7.0
+	 * @version 1.7.1
 	 * @since   1.7.0
 	 */
 	function move_wc_settings_tab_to_wpfactory_menu() {
@@ -233,7 +240,11 @@ final class Alg_WC_Payment_Gateways_by_Customer_Location {
 		$wpfactory_admin_menu->move_wc_settings_tab_to_wpfactory_menu( array(
 			'wc_settings_tab_id' => 'alg_wc_gateways_by_location',
 			'menu_title'         => __( 'Payment Gateways by Customer Location', 'payment-gateways-by-customer-location-for-woocommerce' ),
-			'page_title'         => __( 'Payment Gateways by Customer Location', 'payment-gateways-by-customer-location-for-woocommerce' ),
+			'page_title'         => __( 'WooCommerce Conditional Payment Methods by Location', 'payment-gateways-by-customer-location-for-woocommerce' ),
+			'plugin_icon'        => array(
+				'get_url_method'    => 'wporg_plugins_api',
+				'wporg_plugin_slug' => 'payment-gateways-by-customer-location-for-woocommerce',
+			),
 		) );
 
 	}
@@ -252,31 +263,35 @@ final class Alg_WC_Payment_Gateways_by_Customer_Location {
 	/**
 	 * version_updated.
 	 *
-	 * @version 1.1.0
+	 * @version 1.7.1
 	 * @since   1.1.0
 	 */
 	function version_updated() {
+
 		// Handle deprecated options
 		if (
 			version_compare( get_option( 'alg_wc_gateways_by_location_version', '' ), '1.1.0', '<' ) &&
-			function_exists( 'WC' ) &&
 			( $gateways = WC()->payment_gateways->payment_gateways() )
 		) {
 			foreach ( $gateways as $key => $gateway ) {
 				foreach ( array( 'country', 'state', 'postcode' ) as $type ) {
 					foreach ( array( 'include', 'exclude' ) as $incl_or_excl ) {
-						if ( false !== ( $old_value = get_option( 'alg_wc_gateways_by_location_' . $type . '_' . $incl_or_excl . '_' . $key, false ) ) ) {
-							delete_option( 'alg_wc_gateways_by_location_' . $type . '_' . $incl_or_excl . '_' . $key );
-							$new_value = get_option( 'alg_wc_gateways_by_location_' . $type . '_' . $incl_or_excl, array() );
+						$option_name = 'alg_wc_gateways_by_location_' . $type . '_' . $incl_or_excl;
+						$old_value   = get_option( $option_name . '_' . $key, false );
+						if ( false !== $old_value ) {
+							delete_option( $option_name . '_' . $key );
+							$new_value = get_option( $option_name, array() );
 							$new_value[ $key ] = $old_value;
-							update_option( 'alg_wc_gateways_by_location_' . $type . '_' . $incl_or_excl, $new_value );
+							update_option( $option_name, $new_value );
 						}
 					}
 				}
 			}
 		}
+
 		// Update version
 		update_option( 'alg_wc_gateways_by_location_version', $this->version );
+
 	}
 
 	/**

@@ -7,11 +7,15 @@
  * @author  Algoritmika Ltd.
  */
 
-jQuery( function( $ ) {
+jQuery( function ( $ ) {
 	"use strict";
-	alg_wc_pgbcl.forEach( function( element ) {
-		$( 'body' ).on( 'propertychange change click keyup input paste', 'input[name="' + element + '"]', function() {
-			$( 'body' ).trigger( 'update_checkout' );
-		} );
+	alg_wc_pgbcl.forEach( function ( element ) {
+		$( 'body' ).on(
+			'propertychange change click keyup input paste',
+			'input[name="' + element + '"]',
+			function () {
+				$( 'body' ).trigger( 'update_checkout' );
+			}
+		);
 	} );
 } );

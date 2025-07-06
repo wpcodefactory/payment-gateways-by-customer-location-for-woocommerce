@@ -3,12 +3,13 @@
 Plugin Name: Payment Gateways by Customer Location for WooCommerce
 Plugin URI: https://wpfactory.com/item/payment-gateways-by-customer-location-for-woocommerce/
 Description: Set countries, states, cities or postcodes to include/exclude for WooCommerce payment gateways to show up.
-Version: 1.7.0
+Version: 1.7.1
 Author: WPFactory
 Author URI: https://wpfactory.com
+Requires at least: 4.4
 Text Domain: payment-gateways-by-customer-location-for-woocommerce
 Domain Path: /langs
-WC tested up to: 9.7
+WC tested up to: 9.9
 Requires Plugins: woocommerce
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -26,14 +27,17 @@ if ( 'payment-gateways-by-customer-location-for-woocommerce.php' === basename( _
 	$plugin = 'payment-gateways-by-customer-location-for-woocommerce-pro/payment-gateways-by-customer-location-for-woocommerce-pro.php';
 	if (
 		in_array( $plugin, (array) get_option( 'active_plugins', array() ), true ) ||
-		( is_multisite() && array_key_exists( $plugin, (array) get_site_option( 'active_sitewide_plugins', array() ) ) )
+		(
+			is_multisite() &&
+			array_key_exists( $plugin, (array) get_site_option( 'active_sitewide_plugins', array() ) )
+		)
 	) {
 		defined( 'ALG_WC_PGBCL_FILE_FREE' ) || define( 'ALG_WC_PGBCL_FILE_FREE', __FILE__ );
 		return;
 	}
 }
 
-defined( 'ALG_WC_PGBCL_VERSION' ) || define( 'ALG_WC_PGBCL_VERSION', '1.7.0' );
+defined( 'ALG_WC_PGBCL_VERSION' ) || define( 'ALG_WC_PGBCL_VERSION', '1.7.1' );
 
 defined( 'ALG_WC_PGBCL_FILE' ) || define( 'ALG_WC_PGBCL_FILE', __FILE__ );
 

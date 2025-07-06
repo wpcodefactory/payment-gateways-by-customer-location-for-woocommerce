@@ -2,7 +2,7 @@
 /**
  * Payment Gateways by Customer Location for WooCommerce - General Section Settings
  *
- * @version 1.7.0
+ * @version 1.7.1
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -29,37 +29,17 @@ class Alg_WC_Payment_Gateways_by_Customer_Location_Settings_General extends Alg_
 	/**
 	 * get_settings.
 	 *
-	 * @version 1.7.0
+	 * @version 1.7.1
 	 * @since   1.0.0
 	 *
 	 * @todo    (dev) Force JavaScript checkout update: `billing_country`, `shipping_country`
-	 * @todo    (dev) remove "Enable plugin" option
 	 */
 	function get_settings() {
-
-		$main_settings = array(
-			array(
-				'title'    => __( 'Payment Gateways by Customer Location Options', 'payment-gateways-by-customer-location-for-woocommerce' ),
-				'type'     => 'title',
-				'id'       => 'alg_wc_gateways_by_location_plugin_options',
-			),
-			array(
-				'title'    => __( 'Payment Gateways by Customer Location', 'payment-gateways-by-customer-location-for-woocommerce' ),
-				'desc'     => '<strong>' . __( 'Enable plugin', 'payment-gateways-by-customer-location-for-woocommerce' ) . '</strong>',
-				'desc_tip' => __( 'Set countries, states, cities or postcodes to include/exclude for WooCommerce payment gateways to show up.', 'payment-gateways-by-customer-location-for-woocommerce' ),
-				'id'       => 'alg_wc_gateways_by_location_plugin_enabled',
-				'default'  => 'yes',
-				'type'     => 'checkbox',
-			),
-			array(
-				'type'     => 'sectionend',
-				'id'       => 'alg_wc_gateways_by_location_plugin_options',
-			),
-		);
 
 		$general_settings = array(
 			array(
 				'title'    => __( 'General Options', 'payment-gateways-by-customer-location-for-woocommerce' ),
+				'desc_tip' => __( 'Set countries, states, cities or postcodes to include/exclude for WooCommerce payment gateways to show up.', 'payment-gateways-by-customer-location-for-woocommerce' ),
 				'type'     => 'title',
 				'id'       => 'alg_wc_gateways_by_location_general_options',
 			),
@@ -150,7 +130,7 @@ class Alg_WC_Payment_Gateways_by_Customer_Location_Settings_General extends Alg_
 			),
 		);
 
-		return array_merge( $main_settings, $general_settings, $advanced_settings );
+		return array_merge( $general_settings, $advanced_settings );
 	}
 
 }
