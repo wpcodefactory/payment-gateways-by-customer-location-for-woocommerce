@@ -2,8 +2,8 @@
 Contributors: wpcodefactory, anbinder, karzin, omardabbas
 Tags: woocommerce, payment gateway, location, ecommerce
 Requires at least: 4.4
-Tested up to: 6.8
-Stable tag: 1.7.2
+Tested up to: 7.0
+Stable tag: 1.7.3
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -64,6 +64,10 @@ With the [Pro version](https://wpfactory.com/item/payment-gateways-by-customer-l
 1. Payment Gateways by Country.
 
 == Changelog ==
+
+= 1.7.3 - 27/05/2026 =
+* WC tested up to: 10.8.
+* Tested up to: 7.0.
 
 = 1.7.2 - 05/09/2025 =
 * WC tested up to: 10.1.
