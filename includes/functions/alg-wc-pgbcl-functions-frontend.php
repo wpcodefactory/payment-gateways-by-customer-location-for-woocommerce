@@ -2,23 +2,29 @@
 /**
  * Payment Gateways by Customer Location for WooCommerce - Functions - Frontend
  *
- * @version 1.7.0
+ * @version 1.8.0
  * @since   1.0.0
  *
- * @author  Algoritmika Ltd.
+ * @author WPFactory
+ *
+ * @package WPFactory\WC_Payment_Gateways_by_Customer_Location\Functions
  */
 
 defined( 'ABSPATH' ) || exit;
 
 if ( ! function_exists( 'alg_wc_gateways_by_location_get_location' ) ) {
 	/**
-	 * alg_wc_gateways_by_location_get_location.
+	 * Get location.
 	 *
 	 * @version 1.7.0
 	 * @since   1.0.0
 	 *
-	 * @todo    (dev) code refactoring: merge `city` and `postcode`?
-	 * @todo    (dev) (WC version < 3.0.0) recheck if `get_shipping_country()` and `get_shipping_state()` work correctly
+	 * @param string $type The type of location to get (country, state, city, postcode).
+	 *
+	 * @return string The location value based on the type specified.
+	 *
+	 * @todo (dev) Code refactoring: merge `city` and `postcode`?
+	 * @todo (dev) (WC version < 3.0.0) Recheck if `get_shipping_country()` and `get_shipping_state()` work correctly.
 	 */
 	function alg_wc_gateways_by_location_get_location( $type ) {
 		$result = false;
@@ -26,7 +32,7 @@ if ( ! function_exists( 'alg_wc_gateways_by_location_get_location' ) ) {
 
 			case 'country':
 				$country_type = get_option( 'alg_wc_gateways_by_location_country_type', 'billing' );
-				$result = (
+				$result       = (
 					'by_ip' === $country_type ?
 					alg_wc_gateways_by_location_get_country_by_ip() :
 					(
@@ -79,7 +85,7 @@ if ( ! function_exists( 'alg_wc_gateways_by_location_get_location' ) ) {
 
 			case 'postcode':
 				$postcode = '';
-				$keys = (
+				$keys     = (
 					'billing' === get_option( 'alg_wc_gateways_by_location_postcodes_type', 'billing' ) ?
 					array( 'postcode', 'billing_postcode' ) :
 					array( 's_postcode', 'shipping_postcode' )
@@ -108,10 +114,15 @@ if ( ! function_exists( 'alg_wc_gateways_by_location_get_location' ) ) {
 
 if ( ! function_exists( 'alg_wc_gateways_by_location_range_match' ) ) {
 	/**
-	 * alg_wc_gateways_by_location_range_match.
+	 * Range match.
 	 *
 	 * @version 1.0.0
 	 * @since   1.0.0
+	 *
+	 * @param string $postcode_range    The postcode range to check.
+	 * @param string $postcode_to_check The postcode to check against the range.
+	 *
+	 * @return bool
 	 */
 	function alg_wc_gateways_by_location_range_match( $postcode_range, $postcode_to_check ) {
 		$postcode_range = explode( '...', $postcode_range );
@@ -125,16 +136,21 @@ if ( ! function_exists( 'alg_wc_gateways_by_location_range_match' ) ) {
 
 if ( ! function_exists( 'alg_wc_gateways_by_location_check_postcode' ) ) {
 	/**
-	 * alg_wc_gateways_by_location_check_postcode.
+	 * Check postcode.
 	 *
 	 * @version 1.0.0
 	 * @since   1.0.0
+	 *
+	 * @param string $postcode_to_check The postcode to check.
+	 * @param array  $postcodes         The list of postcodes to check against.
+	 *
+	 * @return bool
 	 */
 	function alg_wc_gateways_by_location_check_postcode( $postcode_to_check, $postcodes ) {
 		foreach ( $postcodes as $postcode ) {
 			if (
 				( $postcode === $postcode_to_check ) ||
-				( false !== strpos( $postcode, '*' )   && fnmatch( $postcode, $postcode_to_check ) ) ||
+				( false !== strpos( $postcode, '*' ) && fnmatch( $postcode, $postcode_to_check ) ) ||
 				( false !== strpos( $postcode, '...' ) && alg_wc_gateways_by_location_range_match( $postcode, $postcode_to_check ) )
 			) {
 				return true;
@@ -146,30 +162,39 @@ if ( ! function_exists( 'alg_wc_gateways_by_location_check_postcode' ) ) {
 
 if ( ! function_exists( 'alg_wc_gateways_by_location_get_country_by_ip' ) ) {
 	/**
-	 * alg_wc_gateways_by_location_get_country_by_ip.
+	 * Get country by IP.
 	 *
-	 * @version 1.0.0
+	 * @version 1.8.0
 	 * @since   1.0.0
 	 */
 	function alg_wc_gateways_by_location_get_country_by_ip() {
-		// Get the country by IP
-		$location = ( class_exists( 'WC_Geolocation' ) ? WC_Geolocation::geolocate_ip() : array( 'country' => '' ) );
-		// Base fallback
+		// Get the country by IP.
+		$location = (
+			class_exists( 'WC_Geolocation' ) ?
+			WC_Geolocation::geolocate_ip() :
+			array( 'country' => '' )
+		);
+		// Base fallback.
 		if ( empty( $location['country'] ) ) {
-			$location = wc_format_country_state_string( apply_filters( 'woocommerce_customer_default_location', get_option( 'woocommerce_default_country' ) ) );
+			$location = wc_format_country_state_string(
+				apply_filters(
+					'woocommerce_customer_default_location', // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
+					get_option( 'woocommerce_default_country' )
+				)
+			);
 		}
-		return ( isset( $location['country'] ) ) ? $location['country'] : '';
+		return ( $location['country'] ?? '' );
 	}
 }
 
 if ( ! function_exists( 'alg_wc_gateways_by_location_customer_get_country' ) ) {
 	/**
-	 * alg_wc_gateways_by_location_customer_get_country.
+	 * Get customer country.
 	 *
 	 * @version 1.0.0
 	 * @since   1.0.0
 	 *
-	 * @todo    (dev) (WC version < 3.0.0) `WC()->customer->get_country()`
+	 * @todo (dev) (WC version < 3.0.0) `WC()->customer->get_country()`.
 	 */
 	function alg_wc_gateways_by_location_customer_get_country() {
 		return WC()->customer->get_billing_country();
@@ -178,12 +203,12 @@ if ( ! function_exists( 'alg_wc_gateways_by_location_customer_get_country' ) ) {
 
 if ( ! function_exists( 'alg_wc_gateways_by_location_customer_get_state' ) ) {
 	/**
-	 * alg_wc_gateways_by_location_customer_get_state.
+	 * Get customer state.
 	 *
 	 * @version 1.0.0
 	 * @since   1.0.0
 	 *
-	 * @todo    (dev) (WC version < 3.0.0) `WC()->customer->get_state()`
+	 * @todo (dev) (WC version < 3.0.0) `WC()->customer->get_state()`.
 	 */
 	function alg_wc_gateways_by_location_customer_get_state() {
 		return WC()->customer->get_billing_state();
@@ -192,16 +217,50 @@ if ( ! function_exists( 'alg_wc_gateways_by_location_customer_get_state' ) ) {
 
 if ( ! function_exists( 'alg_wc_gateways_by_location_maybe_add_european_union_countries' ) ) {
 	/**
-	 * alg_wc_gateways_by_location_maybe_add_european_union_countries.
+	 * Maybe add European Union countries.
 	 *
-	 * @version 1.0.0
+	 * @version 1.8.0
 	 * @since   1.0.0
+	 *
+	 * @param array $countries List of countries.
+	 *
+	 * @return array Modified list of countries.
 	 */
 	function alg_wc_gateways_by_location_maybe_add_european_union_countries( $countries ) {
-		if ( ! empty( $countries ) && in_array( 'EU', $countries ) ) {
-			$countries = array_merge( $countries, array(
-				'AT', 'BE', 'BG', 'CY', 'CZ', 'DE', 'DK', 'EE', 'ES', 'FI', 'FR', 'GB', 'GR', 'HU', 'HR', 'IE', 'IT', 'LT', 'LU', 'LV', 'MT', 'NL', 'PL', 'PT', 'RO', 'SE', 'SI', 'SK'
-			) );
+		if ( ! empty( $countries ) && in_array( 'EU', $countries, true ) ) {
+			$countries = array_merge(
+				$countries,
+				array(
+					'AT',
+					'BE',
+					'BG',
+					'CY',
+					'CZ',
+					'DE',
+					'DK',
+					'EE',
+					'ES',
+					'FI',
+					'FR',
+					'GB',
+					'GR',
+					'HU',
+					'HR',
+					'IE',
+					'IT',
+					'LT',
+					'LU',
+					'LV',
+					'MT',
+					'NL',
+					'PL',
+					'PT',
+					'RO',
+					'SE',
+					'SI',
+					'SK',
+				)
+			);
 		}
 		return $countries;
 	}

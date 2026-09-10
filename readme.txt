@@ -2,8 +2,8 @@
 Contributors: wpcodefactory, anbinder, karzin, omardabbas
 Tags: woocommerce, payment gateway, location, ecommerce
 Requires at least: 4.4
-Tested up to: 7.0
-Stable tag: 1.7.3
+Tested up to: 7.1
+Stable tag: 1.8.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,6 +12,8 @@ Set countries, states, cities or postcodes to include/exclude for WooCommerce pa
 == Description ==
 
 **Payment Gateways by Customer Location for WooCommerce** plugin lets you set locations to include/exclude for WooCommerce payment gateways to show up.
+
+You can set options for **any payment gateway** (including custom gateways).
 
 ### &#9989; Main Features ###
 
@@ -33,17 +35,6 @@ Locations include:
 * billing state/city/postcode, or by
 * shipping state/city/postcode.
 
-### &#127942; Premium Version ###
-
-Free version allows setting options for all standard gateways, i.e.:
-
-* Direct bank transfer,
-* Check payments,
-* Cash on delivery (COD),
-* PayPal.
-
-With the [Pro version](https://wpfactory.com/item/payment-gateways-by-customer-location-for-woocommerce/) you can set options for **any payment gateway** (including custom gateways).
-
 ### &#128472; Feedback ###
 
 * We are open to your suggestions and feedback. Thank you for using or trying out one of our plugins!
@@ -64,6 +55,17 @@ With the [Pro version](https://wpfactory.com/item/payment-gateways-by-customer-l
 1. Payment Gateways by Country.
 
 == Changelog ==
+
+= 1.8.0 - 10/09/2026 =
+* Dev - Free version now can handle any payment gateway.
+* Dev - Admin settings descriptions updated.
+* Dev - Code refactoring.
+* Dev - Coding standards improved.
+* Dev - WPFactory Admin Menu - Library updated (to v1.1.2).
+* Dev - WPFactory Cross-Selling - Library updated (to v1.1.5).
+* Dev - WPFactory Key Manager - Library updated (to v1.1.1).
+* WC tested up to: 11.1.
+* Tested up to: 7.1.
 
 = 1.7.3 - 27/05/2026 =
 * WC tested up to: 10.8.

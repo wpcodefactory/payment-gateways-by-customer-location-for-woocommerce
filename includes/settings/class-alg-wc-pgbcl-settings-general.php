@@ -2,139 +2,146 @@
 /**
  * Payment Gateways by Customer Location for WooCommerce - General Section Settings
  *
- * @version 1.7.1
+ * @version 1.8.0
  * @since   1.0.0
  *
- * @author  Algoritmika Ltd.
+ * @author WPFactory
+ *
+ * @package WPFactory\WC_Payment_Gateways_by_Customer_Location\Settings
  */
 
 defined( 'ABSPATH' ) || exit;
 
-if ( ! class_exists( 'Alg_WC_Payment_Gateways_by_Customer_Location_Settings_General' ) ) :
-
-class Alg_WC_Payment_Gateways_by_Customer_Location_Settings_General extends Alg_WC_Payment_Gateways_by_Customer_Location_Settings_Section {
+if ( ! class_exists( 'Alg_WC_PGBCL_Settings_General' ) ) :
 
 	/**
-	 * Constructor.
+	 * Alg_WC_PGBCL_Settings_General class.
 	 *
-	 * @version 1.0.0
+	 * @version 1.8.0
 	 * @since   1.0.0
 	 */
-	function __construct() {
-		$this->id   = '';
-		$this->desc = __( 'General', 'payment-gateways-by-customer-location-for-woocommerce' );
-		parent::__construct();
+	class Alg_WC_PGBCL_Settings_General extends Alg_WC_PGBCL_Settings_Section {
+
+		/**
+		 * Constructor.
+		 *
+		 * @version 1.0.0
+		 * @since   1.0.0
+		 */
+		public function __construct() {
+			$this->id   = '';
+			$this->desc = __( 'General', 'payment-gateways-by-customer-location-for-woocommerce' );
+			parent::__construct();
+		}
+
+		/**
+		 * Get settings.
+		 *
+		 * @version 1.8.0
+		 * @since   1.0.0
+		 *
+		 * @todo (dev) Force JavaScript checkout update: `billing_country`, `shipping_country`.
+		 */
+		public function get_settings() {
+
+			$general_settings = array(
+				array(
+					'title' => __( 'General Options', 'payment-gateways-by-customer-location-for-woocommerce' ),
+					'desc'  => __( 'Set countries, states, cities or postcodes to include/exclude for WooCommerce payment gateways to show up.', 'payment-gateways-by-customer-location-for-woocommerce' ),
+					'type'  => 'title',
+					'id'    => 'alg_wc_gateways_by_location_general_options',
+				),
+				array(
+					'title'   => __( 'Detect country by', 'payment-gateways-by-customer-location-for-woocommerce' ),
+					'desc'    => sprintf(
+						/* Translators: %1$s: Option name, %2$s: Link. */
+						__( 'If you are going to select "%1$s" option here, please make sure that %2$s in WooCommerce is available.', 'payment-gateways-by-customer-location-for-woocommerce' ),
+						__( 'Country by IP', 'payment-gateways-by-customer-location-for-woocommerce' ),
+						'<a href="' . admin_url( 'admin.php?page=wc-settings&tab=integration&section=maxmind_geolocation' ) . '">' .
+							__( 'Geolocation', 'payment-gateways-by-customer-location-for-woocommerce' ) .
+						'</a>'
+					),
+					'id'      => 'alg_wc_gateways_by_location_country_type',
+					'type'    => 'select',
+					'class'   => 'wc-enhanced-select',
+					'default' => 'billing',
+					'options' => array(
+						'billing'  => __( 'Billing country', 'payment-gateways-by-customer-location-for-woocommerce' ),
+						'shipping' => __( 'Shipping country', 'payment-gateways-by-customer-location-for-woocommerce' ),
+						'by_ip'    => __( 'Country by IP', 'payment-gateways-by-customer-location-for-woocommerce' ),
+					),
+				),
+				array(
+					'title'   => __( 'Detect state by', 'payment-gateways-by-customer-location-for-woocommerce' ),
+					'id'      => 'alg_wc_gateways_by_location_state_type',
+					'type'    => 'select',
+					'class'   => 'wc-enhanced-select',
+					'default' => 'billing',
+					'options' => array(
+						'billing'  => __( 'Billing state', 'payment-gateways-by-customer-location-for-woocommerce' ),
+						'shipping' => __( 'Shipping state', 'payment-gateways-by-customer-location-for-woocommerce' ),
+					),
+				),
+				array(
+					'title'   => __( 'Detect city by', 'payment-gateways-by-customer-location-for-woocommerce' ),
+					'id'      => 'alg_wc_gateways_by_location_cities_type',
+					'type'    => 'select',
+					'class'   => 'wc-enhanced-select',
+					'default' => 'billing',
+					'options' => array(
+						'billing'  => __( 'Billing city', 'payment-gateways-by-customer-location-for-woocommerce' ),
+						'shipping' => __( 'Shipping city', 'payment-gateways-by-customer-location-for-woocommerce' ),
+					),
+				),
+				array(
+					'title'   => __( 'Detect postcode by', 'payment-gateways-by-customer-location-for-woocommerce' ),
+					'id'      => 'alg_wc_gateways_by_location_postcodes_type',
+					'type'    => 'select',
+					'class'   => 'wc-enhanced-select',
+					'default' => 'billing',
+					'options' => array(
+						'billing'  => __( 'Billing postcode', 'payment-gateways-by-customer-location-for-woocommerce' ),
+						'shipping' => __( 'Shipping postcode', 'payment-gateways-by-customer-location-for-woocommerce' ),
+					),
+				),
+				array(
+					'type' => 'sectionend',
+					'id'   => 'alg_wc_gateways_by_location_general_options',
+				),
+			);
+
+			$advanced_settings = array(
+				array(
+					'title' => __( 'Advanced Options', 'payment-gateways-by-customer-location-for-woocommerce' ),
+					'type'  => 'title',
+					'id'    => 'alg_wc_gateways_by_location_advanced_options',
+				),
+				array(
+					'title'    => __( 'Force JavaScript checkout update', 'payment-gateways-by-customer-location-for-woocommerce' ),
+					'desc_tip' => __( 'If payment gateways section on the checkout page is not updated automatically when customer changes state, city or postcode, select fields to force the update.', 'payment-gateways-by-customer-location-for-woocommerce' ),
+					'id'       => 'alg_wc_gateways_by_location_force_js_checkout_update',
+					'type'     => 'multiselect',
+					'class'    => 'chosen_select',
+					'default'  => array(),
+					'options'  => array(
+						'billing_state'     => __( 'Billing state', 'payment-gateways-by-customer-location-for-woocommerce' ),
+						'shipping_state'    => __( 'Shipping state', 'payment-gateways-by-customer-location-for-woocommerce' ),
+						'billing_city'      => __( 'Billing city', 'payment-gateways-by-customer-location-for-woocommerce' ),
+						'shipping_city'     => __( 'Shipping city', 'payment-gateways-by-customer-location-for-woocommerce' ),
+						'billing_postcode'  => __( 'Billing postcode', 'payment-gateways-by-customer-location-for-woocommerce' ),
+						'shipping_postcode' => __( 'Shipping postcode', 'payment-gateways-by-customer-location-for-woocommerce' ),
+					),
+				),
+				array(
+					'type' => 'sectionend',
+					'id'   => 'alg_wc_gateways_by_location_advanced_options',
+				),
+			);
+
+			return array_merge( $general_settings, $advanced_settings );
+		}
 	}
-
-	/**
-	 * get_settings.
-	 *
-	 * @version 1.7.1
-	 * @since   1.0.0
-	 *
-	 * @todo    (dev) Force JavaScript checkout update: `billing_country`, `shipping_country`
-	 */
-	function get_settings() {
-
-		$general_settings = array(
-			array(
-				'title'    => __( 'General Options', 'payment-gateways-by-customer-location-for-woocommerce' ),
-				'desc_tip' => __( 'Set countries, states, cities or postcodes to include/exclude for WooCommerce payment gateways to show up.', 'payment-gateways-by-customer-location-for-woocommerce' ),
-				'type'     => 'title',
-				'id'       => 'alg_wc_gateways_by_location_general_options',
-			),
-			array(
-				'title'    => __( 'Detect country by', 'payment-gateways-by-customer-location-for-woocommerce' ),
-				'desc'     => sprintf(
-					/* Translators: %1$s: Option name, %2$s: Link. */
-					__( 'If you are going to select "%1$s" option here, please make sure that %2$s in WooCommerce is available.', 'payment-gateways-by-customer-location-for-woocommerce' ),
-					__( 'Country by IP', 'payment-gateways-by-customer-location-for-woocommerce' ),
-					'<a href="' . admin_url( 'admin.php?page=wc-settings&tab=integration&section=maxmind_geolocation' ) . '">' .
-						__( 'Geolocation', 'payment-gateways-by-customer-location-for-woocommerce' ) .
-					'</a>'
-				),
-				'id'       => 'alg_wc_gateways_by_location_country_type',
-				'type'     => 'select',
-				'class'    => 'wc-enhanced-select',
-				'default'  => 'billing',
-				'options'  => array(
-					'billing'  => __( 'Billing country', 'payment-gateways-by-customer-location-for-woocommerce' ),
-					'shipping' => __( 'Shipping country', 'payment-gateways-by-customer-location-for-woocommerce' ),
-					'by_ip'    => __( 'Country by IP', 'payment-gateways-by-customer-location-for-woocommerce' ),
-				),
-			),
-			array(
-				'title'    => __( 'Detect state by', 'payment-gateways-by-customer-location-for-woocommerce' ),
-				'id'       => 'alg_wc_gateways_by_location_state_type',
-				'type'     => 'select',
-				'class'    => 'wc-enhanced-select',
-				'default'  => 'billing',
-				'options'  => array(
-					'billing'  => __( 'Billing state', 'payment-gateways-by-customer-location-for-woocommerce' ),
-					'shipping' => __( 'Shipping state', 'payment-gateways-by-customer-location-for-woocommerce' ),
-				),
-			),
-			array(
-				'title'    => __( 'Detect city by', 'payment-gateways-by-customer-location-for-woocommerce' ),
-				'id'       => 'alg_wc_gateways_by_location_cities_type',
-				'type'     => 'select',
-				'class'    => 'wc-enhanced-select',
-				'default'  => 'billing',
-				'options'  => array(
-					'billing'  => __( 'Billing city', 'payment-gateways-by-customer-location-for-woocommerce' ),
-					'shipping' => __( 'Shipping city', 'payment-gateways-by-customer-location-for-woocommerce' ),
-				),
-			),
-			array(
-				'title'    => __( 'Detect postcode by', 'payment-gateways-by-customer-location-for-woocommerce' ),
-				'id'       => 'alg_wc_gateways_by_location_postcodes_type',
-				'type'     => 'select',
-				'class'    => 'wc-enhanced-select',
-				'default'  => 'billing',
-				'options'  => array(
-					'billing'  => __( 'Billing postcode', 'payment-gateways-by-customer-location-for-woocommerce' ),
-					'shipping' => __( 'Shipping postcode', 'payment-gateways-by-customer-location-for-woocommerce' ),
-				),
-			),
-			array(
-				'type'     => 'sectionend',
-				'id'       => 'alg_wc_gateways_by_location_general_options',
-			),
-		);
-
-		$advanced_settings = array(
-			array(
-				'title'    => __( 'Advanced Options', 'payment-gateways-by-customer-location-for-woocommerce' ),
-				'type'     => 'title',
-				'id'       => 'alg_wc_gateways_by_location_advanced_options',
-			),
-			array(
-				'title'    => __( 'Force JavaScript checkout update', 'payment-gateways-by-customer-location-for-woocommerce' ),
-				'desc_tip' => __( 'If payment gateways section on the checkout page is not updated automatically when customer changes state, city or postcode, select fields to force the update.', 'payment-gateways-by-customer-location-for-woocommerce' ),
-				'id'       => 'alg_wc_gateways_by_location_force_js_checkout_update',
-				'type'     => 'multiselect',
-				'class'    => 'chosen_select',
-				'default'  => array(),
-				'options'  => array(
-					'billing_state'     => __( 'Billing state', 'payment-gateways-by-customer-location-for-woocommerce' ),
-					'shipping_state'    => __( 'Shipping state', 'payment-gateways-by-customer-location-for-woocommerce' ),
-					'billing_city'      => __( 'Billing city', 'payment-gateways-by-customer-location-for-woocommerce' ),
-					'shipping_city'     => __( 'Shipping city', 'payment-gateways-by-customer-location-for-woocommerce' ),
-					'billing_postcode'  => __( 'Billing postcode', 'payment-gateways-by-customer-location-for-woocommerce' ),
-					'shipping_postcode' => __( 'Shipping postcode', 'payment-gateways-by-customer-location-for-woocommerce' ),
-				),
-			),
-			array(
-				'type'     => 'sectionend',
-				'id'       => 'alg_wc_gateways_by_location_advanced_options',
-			),
-		);
-
-		return array_merge( $general_settings, $advanced_settings );
-	}
-
-}
 
 endif;
 
-return new Alg_WC_Payment_Gateways_by_Customer_Location_Settings_General();
+return new Alg_WC_PGBCL_Settings_General();
