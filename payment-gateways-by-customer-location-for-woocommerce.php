@@ -3,13 +3,14 @@
  * Plugin Name: Payment Gateways by Customer Location for WooCommerce
  * Plugin URI: https://wpfactory.com/item/payment-gateways-by-customer-location-for-woocommerce/
  * Description: Set countries, states, cities or postcodes to include/exclude for WooCommerce payment gateways to show up.
- * Version: 1.8.0
+ * Version: 1.8.1
  * Author: WPFactory
  * Author URI: https://wpfactory.com
+ * Requires PHP: 7.4
  * Requires at least: 4.4
  * Text Domain: payment-gateways-by-customer-location-for-woocommerce
  * Domain Path: /langs
- * WC tested up to: 11.1
+ * WC tested up to: 11.3
  * Requires Plugins: woocommerce
  * License: GNU General Public License v3.0
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -50,7 +51,7 @@ if ( 'payment-gateways-by-customer-location-for-woocommerce.php' === basename( _
  * @version 1.0.0
  * @since   1.0.0
  */
-defined( 'ALG_WC_PGBCL_VERSION' ) || define( 'ALG_WC_PGBCL_VERSION', '1.8.0' );
+defined( 'ALG_WC_PGBCL_VERSION' ) || define( 'ALG_WC_PGBCL_VERSION', '1.8.1' );
 
 /**
  * Plugin file.
